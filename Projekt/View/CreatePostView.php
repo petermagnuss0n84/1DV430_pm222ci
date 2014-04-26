@@ -1,11 +1,20 @@
 <?php
 
+require_once 'Model/PostsHandler.php';
+
 class CreatePostView{
 
-	private $title = "";
-	private $post = "";
-	private $author ="";
-	private $postbutton ="";
+	private $title = "title";
+	private $post = "post";
+	private $author ="author";
+	private $categorypick ="categorypick";
+	private $postbutton ="postbutton";
+
+		const POST_CREATED = 0;
+		const TITLE_IS_EMPTY = 1;
+		const POST_IS_EMPTY = 2;
+		const AUTHOR_IS_EMPTY = 3;
+		const NO_HACK = 4;
 
 	public function CreatePostForm(){
 			$ret = "<div id='createPostForm'>
@@ -24,6 +33,12 @@ class CreatePostView{
 					</div>					
 					<div class=''>	
 						<p><button name='$this->postbutton' class='button' id='button'>Skapa inlägg</button></p>
+					</div>
+					<div>
+						<p><select name='dropdown'>
+    					<option value='sadsa'>product</option>
+    					<option value='product1'>product 1</option>
+    					</select></p>
 					</div>
 					</form>						
 				</div>";
@@ -55,4 +70,33 @@ class CreatePostView{
 		}
 		return FALSE;
 	}
+
+		//Funktion med felmeddelanden som visas när man skapar en post.
+		public static function Message($n){
+				$message = null;
+				
+				switch($n){
+					case self::POST_CREATED:
+						$message .= "<p id='fieldtext2'>Inlägget har skapats</p>";
+						break;
+						
+					case self::TITLE_IS_EMPTY:
+						$message .= "<p id='fieldtext2'> En title saknas </p>";
+						break;
+						
+					case self::POST_IS_EMPTY:
+						$message .= "<p id='fieldtext2'>En text saknas</p>";
+						break;
+						
+					case self::AUTHOR_IS_EMPTY:
+						$message .= "<p id='fieldtext2'>Du måste ange en författare</p>";
+						break;
+					case self::NO_HACK:
+						$message .= "<p id='fieldtext2'>Du får inte skicka med såna grejer</p>";
+						break;
+				}			
+			
+			return "<p class='message'> $message</p>";
+			
+		}	
 }

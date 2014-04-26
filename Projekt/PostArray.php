@@ -1,6 +1,6 @@
 <?php
 
-class PostArray{
+class PostsArray{
 	
 	private $blogposts = array();
 	
@@ -18,7 +18,7 @@ class PostArray{
 	
 }
 
-class Blogpost{
+class PostArray{
 	
 	private $id;
 	private $title;
