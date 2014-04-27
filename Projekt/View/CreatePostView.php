@@ -36,8 +36,8 @@ class CreatePostView{
 					</div>
 					<div>
 						<p><select name='dropdown'>
-    					<option value='sadsa'>product</option>
-    					<option value='product1'>product 1</option>
+    					
+    					<option value=''></option>
     					</select></p>
 					</div>
 					</form>						

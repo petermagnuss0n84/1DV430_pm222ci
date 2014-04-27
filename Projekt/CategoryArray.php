@@ -1,6 +1,6 @@
 <?php
 
-class CategoryArray{
+class CategorysArray{
 	
 	private $category = array();
 	
@@ -18,7 +18,7 @@ class CategoryArray{
 	
 }
 
-class Category{
+class CategoryArray{
 	
 	private $id;
 	private $category;

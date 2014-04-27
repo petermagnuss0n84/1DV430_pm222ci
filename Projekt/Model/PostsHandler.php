@@ -50,7 +50,7 @@ class PostsHandler{
 	}
 	//Funktion för att hämta alla inlägg.
 	public function GetPosts(){
-		$sqlQuery = "SELECT id, title, post, author From Posts ORDER BY id DESC";
+		$sqlQuery = "SELECT id, title, post, author From posts ORDER BY id DESC";
 
 		$stmt = $this->db->Prepare($sqlQuery);
 

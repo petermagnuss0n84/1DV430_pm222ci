@@ -39,7 +39,7 @@ class MasterController{
 			$controller .= $createpostController->DoControll($db);
 		}
 		
-		//Om användaren trycker på "Registrera dig" länken vissas detta.
+		//Om användaren trycker på "Registrera dig" länken visas detta.
 		if($navigationView->navRegister()){
 			$registerController = new RegisterController();
 			$controller = $registerController->DoControll($db);			
