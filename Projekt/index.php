@@ -4,7 +4,7 @@ session_start();
 require_once 'Controller/LoginController.php';
 require_once 'Model/LoginHandler.php';
 require_once 'Model/PostsHandler.php';
-require_once 'Common/PageView.php';
+require_once 'View/PageView.php';
 require_once 'DBConfig.php';
 require_once 'Database.php';
 require_once 'View/RegisterView.php';
@@ -18,7 +18,7 @@ class MasterController{
 	public static function DoControll(){
 
 		$navigationView = new NavigationView();
-		$pageView = new Common\PageView();
+		$pageView = new PageView();
 		$pageView->StyleSheet('style.css');
 		$db = new Database();
 		

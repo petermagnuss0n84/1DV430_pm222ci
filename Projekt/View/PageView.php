@@ -1,8 +1,5 @@
 <?php
 
-namespace Common;
-
-
 class PageView{
 	
 	private $m_charset;
@@ -32,25 +29,25 @@ class PageView{
   }
 	
 	//Hämtar html sidan.
-	public function GetHTMLPage($title, $body) {
+	// public function GetHTMLPage($title, $body) {
     
-    $head = $this->BuildHeadTags(false);
+ //    $head = $this->BuildHeadTags(false);
     
-    $html = "
-        <!DOCTYPE HTML SYSTEM>
-        <html>
-          <head>
-            <title>$title</title>
-            <meta http-equiv='content-type' content='text/html; charset=$this->m_charset'>
-            $head
-          </head>
-          <body>
-            $body
-          </body>
-        </html>";
+ //    $html = "
+ //        <!DOCTYPE HTML SYSTEM>
+ //        <html>
+ //          <head>
+ //            <title>$title</title>
+ //            <meta http-equiv='content-type' content='text/html; charset=$this->m_charset'>
+ //            $head
+ //          </head>
+ //          <body>
+ //            $body
+ //          </body>
+ //        </html>";
 		       
-    return $html;
-  }
+ //    return $html;
+ //  }
 	
 	//Returnerar xml sidan.
 	public function GetXHTML10StrictPage($title, $body) {
