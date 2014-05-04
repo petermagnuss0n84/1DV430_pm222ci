@@ -8,10 +8,12 @@ require_once 'View/PageView.php';
 require_once 'DBConfig.php';
 require_once 'Database.php';
 require_once 'View/RegisterView.php';
-require_once 'Controller/RegisterController.php';
 require_once 'View/NavigationView.php';
+require_once 'View/CreateCommentView.php';
+require_once 'Controller/RegisterController.php';
 require_once 'Controller/CreatePostController.php';
 require_once 'Controller/PostsController.php';
+require_once 'Controller/CommentController.php';
 
 class MasterController{
 	
@@ -43,6 +45,13 @@ class MasterController{
 		if($navigationView->navRegister()){
 			$registerController = new RegisterController();
 			$controller = $registerController->DoControll($db);			
+		}
+
+		if($navigationView->navComment()){
+			$commentController = new CommentController();
+			$loginController = new LoginController();
+			$controller = $loginController->DoControll($db);
+			$controller .= $commentController->DoControll($db);
 		}
 		
 		
