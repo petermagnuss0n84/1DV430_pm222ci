@@ -1,12 +1,16 @@
 <?php
 
 require_once 'Model/CommentsHandler.php';
+require_once 'Model/PostsHandler.php';
 
 class CreateCommentView{
 
 	private $id = "id";
 	private $comment ="comment";
 	private $createcommentbutton ="createcommentbutton";
+	private $title ="title";
+	private $deleteCommentID ="deleteCommentID";
+	private $deleteComment ="deleteComment";
 
 		const COMMENT_CREATED = 0;
 		const COMMENT_IS_EMPTY = 1;
@@ -32,6 +36,42 @@ class CreateCommentView{
 				return $ret;
 	}
 
+	public function ShowSpecificComments($comment, $deletebutton){
+		$ret = "";
+		
+		$ret .= "<div id='readcomments'>
+			<div></br>
+			<p id='commentfield'>".nl2br($comment->getComment())."</p></br>		
+			</div>
+			</div>
+			</div>
+			<div id='deleteComment'>			
+			$deletebutton
+			</div>
+		</div>";
+
+	
+	return $ret;		
+	}
+
+	//Visar det inlägg som tilllhör det som ska kommenteras.
+	public function CommentPost($blogposts){
+		$ret = "";
+		
+		$ret .= "<div id='readcomments'>
+			<div></br>
+			<p id='commentfield'>".nl2br($blogposts->getTitle())."</p></br>
+			<p id='commentfield'>".nl2br($blogposts->getPost())."</p></br>		
+			<p id='commentfield'>".nl2br($blogposts->getAuthor())."</p></br>				
+			</div>
+			</div>
+			</div>
+		</div>";
+
+	
+	return $ret;		
+	}
+
 	public function NotLoggedIn() {		
 			$ret = "
 				<div id='loggInToComment'>
@@ -39,6 +79,15 @@ class CreateCommentView{
 				</div>";
 			return $ret;
 	}
+
+	//Funktion för att ta bort en kommentar.
+	 public function DeleteComment($deleteID)
+	 {
+			 return "<form action='' method='post'>
+			 <input name='$this->deleteCommentID' type='hidden' value='".$deleteID."' />
+			 <input name='$this->deleteComment' type='submit' id='commentDeletebutton' value='X' />
+			 </form>"; 		
+	 }
 
 	//Funktion till skapa inlägg knappen anropar createcommentbutton knappen.
 	public function TriedToComment(){
@@ -48,7 +97,7 @@ class CreateCommentView{
 		return FALSE;
 	}
 
-		//Hämtar det som har skrivits i inläggfältet.	
+		//Hämtar det som har skrivits i kommentarfältet.	
 	public function GetComment(){
 		if(isset($_POST[$this->comment])){
 			return $_POST[$this->comment];
@@ -61,7 +110,19 @@ class CreateCommentView{
 			return $_GET[$this->id];
 		}
 	}
-	
+	//Tar bort en specifik kommentar.
+	public function DeleteCommentID(){
+		 if(isset ($_POST[$this->deleteCommentID])){
+			 return $_POST[$this->deleteCommentID];
+		 }
+	 }
+	//Kollar om det går att ta bort en kommentar.
+	 public function TriedToDeleteComment(){
+		 if(isset($_POST[$this->deleteCommentID])){
+			 return TRUE;
+		}
+		 return FALSE;
+	 }
 		//Funktion med felmeddelanden när validering sker när man skapar en kommentar.
 		public static function Message($n){
 				$message = null;
@@ -77,7 +138,7 @@ class CreateCommentView{
 						$message .= "<p id='fieldtext2'>Du måste vara inloggad för att skriva en kommentar.</p>";
 						break;
 					case self::NO_HACK:
-						$message .= "<p id='fieldtext2'>Sånt går inte att skriva här</p>";
+						$message .= "<p id='fieldtext2'></p>";
 						break;
 					 case self::DELETED:
 						 $message .= "<p id='fieldtext2'>Kommentar raderad</p>";

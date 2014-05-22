@@ -20,16 +20,18 @@ class LoginView{
 	public function DoLoginBox() {
 		//Retunerar ett formulär
 		return "<div ><form id='login' action='index.php' method='get' accept-charset='UTF-8' >	
-				<fieldset id='form'>							
+				<fieldset id='loginform'>							
 				<input type='hidden' name='submitted' id='submitted' value='1'/>
-				<label for='username' >Name:</label>
+				<label for='username' id='loginname'>Användarnamn:</label>
 				<input type='text' name='$this->getUserName' id='username' width='50px' />
-				<label for='password' >Password:</label>
+				<label for='password' id='loginpassword'>Lösenord:</label>
 				<input type='password' name='$this->getPassword' id='password'  />
-				<input type='submit' name='$this->login' value='Login' />
-				<input type='checkbox' name='$this->remember' value='RemeberMe' /> Kom ihåg mig<br />
+				<p  id='loginremeberme'>
+				<input type='submit' name='$this->login' value='Logga in' />
+				<input type='checkbox' name='$this->remember' value='RemeberMe' />Kom ihåg mig</p>
 				<a href='$this->nav'>Registrera dig</a>
 				</fieldset>
+				<a href='$this->start' id='startlink2'>Startsidan</a>
 				</form>		
 				</div>";
 	}
@@ -37,8 +39,8 @@ class LoginView{
 	public function DoLogoutBox(){
 		//Retunerar utloggningsknappen
 		return "<div><form id='login' action='index.php' method='get' accept-charset='UTF-8'>
-				<input type='submit' name='$this->logout' value='Logout' />
 				<a href='$this->start' id='startlink'>Startsidan</a>
+				<input type='submit' name='$this->logout' value='Logout' />
 				</form>
 				</div>";		
 	}
@@ -46,9 +48,9 @@ class LoginView{
 	public function DoLogoutBoxAdmin(){
 		//Retunerar utloggningsknappen när admin är inloggad.
 		return "<div><form id='login' action='index.php' method='get' accept-charset='UTF-8'>
-				<input type='submit' name='$this->logout' value='Logout' />
 				<a href='$this->start' id='startlink'>Startsidan</a>
 				<a href='$this->admin' id='startlink'>Skapa nytt inlägg</a>
+				<input type='submit' name='$this->logout' value='Logout' id='logoutbutton'/>
 				</form>
 				</div>";		
 	}

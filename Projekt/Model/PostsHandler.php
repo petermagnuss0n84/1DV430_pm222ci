@@ -46,7 +46,6 @@ class PostsHandler{
 		}
 		$stmt->close();
 		return $categorys;
-
 	}
 	//Funktion för att hämta alla inlägg.
 	public function GetPosts(){
@@ -66,10 +65,63 @@ class PostsHandler{
 		}
 		$stmt->close();
 		return $blogposts;
+	}
 
+	//Funktion för att ta bort ett specifikt inlägg.
+	public function DeletePost($deletePostID){
+	
+		$sqlQuery = "DELETE FROM posts WHERE id = ?";
+		
+		$stmt = $this->db->Prepare($sqlQuery);
+		
+		$stmt->bind_param('i', $deletePostID);
+		
+		$this->db->execute($stmt);
+		
+		$stmt->close();
+		
+		return FALSE;
+	}
 
+	//Updaterar en post.
+	public function UpdatePost($title, $post, $author, $id){
+		
+		$sqlQuery = "UPDATE posts SET title = ?, post = ?, author = ? WHERE id = ?";
+		
+		$stmt = $this->db->Prepare($sqlQuery);
+		$stmt->bind_param('sssi', $title, $post, $author, $id);
+		
+		if($this->db->Execute($stmt) === TRUE){
+			return TRUE;
+		}
+			return FALSE;
+	}
 
-
+	public function GetSpecificPost($id){
+		
+		$sqlQuery = "SELECT id, title, post, author FROM posts WHERE id = ? ORDER BY Id Desc";
+		
+		$stmt = $this->db->Prepare($sqlQuery);
+		
+		$stmt->bind_param('i', $id);
+		
+		$this->db->Execute($stmt);
+		
+		if ($stmt->bind_result($id, $title, $post, $author) == FALSE) {
+        		throw new \Exception($this->mysqli->error);
+        }
+		if ($stmt->fetch()) {
+           	$ret = new PostArray($id, $title, $post, $author);
+                        
+        } else {
+        	throw new \Exception("Could not find post $id");
+        }
+                
+        $stmt->close();
+                       
+        return $ret;
+		
+		
 	}
 
 	//Kollar så att det finns en titel.

@@ -94,18 +94,18 @@
 						break;
 						
 					case self::NAME_IS_EMPTY:
-						$message .= "Du måste skriva ett användarnamn";
+						$message .= "Ett användarnamn måste anges";
 						break;
 						
 					case self::PASS_IS_EMPTY:
-						$message .= "Du måste skriva ett lösenord";
+						$message .= "Ett lösenord måste anges";
 						break;
 						
 					case self::PASS_NOT_EQUAL:
 						$message .= "Lösenorden stämmer inte överens";
 						break;
 					case self::PASS_NOT_GOOD:
-						$message .= "Lösenordet måste ha 6 tecken eller mer, och innehålla stora och små bokstäver samt minst en siffra";
+						$message .= "Lösenordet måste innehålla sex tecken eller mer, minst en stor bokstav och siffra";
 						break;
 				}			
 			

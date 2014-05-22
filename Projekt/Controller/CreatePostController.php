@@ -2,6 +2,7 @@
 
 require_once 'View/CreatePostView.php';
 require_once 'Model/PostsHandler.php';
+require_once 'Model/LoginHandler.php';
 
 class CreatePostController{
 
@@ -12,8 +13,15 @@ class CreatePostController{
 	public function DoControll(Database $db){
 		$createpostView = New CreatePostView();
 		$postsHandler = New PostsHandler($db);
+		$loginHandler = New LoginHandler($db);
 
-		$this->ret .= $createpostView->CreatePostForm();
+		if($loginHandler->LoggedInAsAdmin() === true){
+			$this->ret .= $createpostView->CreatePostForm();
+		}
+		else{
+			$this->ret .= $createpostView->NotLoggedInAsAdmin();
+		}
+		
 
 		if($createpostView->TriedToPost()){
 			

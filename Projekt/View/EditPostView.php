@@ -2,51 +2,47 @@
 
 require_once 'Model/PostsHandler.php';
 
-class CreatePostView{
+class EditPostView{
 
 	private $title = "title";
 	private $post = "post";
 	private $author ="author";
+	private $id ="id";
 	private $categorypick ="categorypick";
 	private $postbutton ="postbutton";
 
-		const POST_CREATED = 0;
+		const POST_UPDATED = 0;
 		const TITLE_IS_EMPTY = 1;
 		const POST_IS_EMPTY = 2;
 		const AUTHOR_IS_EMPTY = 3;
 		const NO_HACK = 4;
 
-	public function CreatePostForm(){
-			$ret = "<div id='createPostForm'>
-					<form method='POST'>					
-					<div class=''>
-						<p id='fieldtext'>Titel:</p>
-						<p><input type='text' id='posttitle' name='$this->title' /></p>
-					</div>
-					<div class=''>	
-						<p id='fieldtext'>Text:</p>
-						<p><textarea type='text' id='posttext' name='$this->post' rows='20' cols='90'/></textarea></p>
-					</div>
-					<div class=''>	
-						<p id='fieldtext'>Författare:</p>
-						<p><input type='text' id='postauthor' name='$this->author' /></p>
-					</div>					
-					<div class=''>	
-						<p><button name='$this->postbutton' class='button' id='button'>Skapa inlägg</button></p>
-					</div>
-					<div>
-						<p><select name='dropdown'>
-    					
-    					<option value=''></option>
-    					</select></p>
-					</div>
+	public function EditPostForm($blogpost){
+			$ret = '
+				<div id="blogpostForm">
+					<form method="POST">										
+						<div class="">
+							<p id="fieldtext">Titel:</p>
+							<p><input type="text" id="blogposttitle" name="'.$this->title.'" value="'.$blogpost->getTitle().'" /></p>
+						</div>					
+						<div class="">
+							<p id="fieldtext">Text:</p>
+							<p><textarea type="text" id="blogposttext" name="'.$this->post.'"  rows="20" cols="80"/>'.$blogpost->getPost().'</textarea></p>
+						</div>					
+						<div class="">	
+							<p id="fieldtext">Författare:</p>
+							<p><input type="text" id="blogpostauthor" name="'.$this->author.'" value="'.$blogpost->getAuthor().'"" /></p>
+						</div>									
+						<div class="">	
+							<p><button name="'.$this->postbutton.'" class="button" id="button"">Redigera inlägg</button></p>
+						</div>				
 					</form>						
-				</div>";
+				</div>';
 				return $ret;
-	}
+		}
 
 	public function NotLoggedInAsAdmin(){
-		$ret="<div>Du måste logga in som admin för att kunna skapa ett inlägg</div>";
+		$ret="<div>Du måste logga in som admin för att kunna redigera ett inlägg</div>";
 
 		return $ret;
 	}
@@ -69,8 +65,14 @@ class CreatePostView{
 			return $_POST[$this->author];
 		}
 	}
+	//Hämtar ID.
+	public function GetId(){		
+		if(isset ($_GET[$this->id])){
+			return $_GET[$this->id];
+		}
+	}
 	//Funktion till skapa inlägg knappen
-	public function TriedToPost(){
+	public function TriedToEditPost(){
 		if(isset($_POST[$this->postbutton])){
 			return TRUE;
 		}
@@ -82,8 +84,8 @@ class CreatePostView{
 				$message = null;
 				
 				switch($n){
-					case self::POST_CREATED:
-						$message .= "<p id='fieldtext2'>Inlägget har skapats</p>";
+					case self::POST_UPDATED:
+						$message .= "<p id='fieldtext2'>Inlägget har redigerats</p>";
 						break;
 						
 					case self::TITLE_IS_EMPTY:
@@ -98,7 +100,7 @@ class CreatePostView{
 						$message .= "<p id='fieldtext2'>Du måste ange en författare</p>";
 						break;
 					case self::NO_HACK:
-						$message .= "<p id='fieldtext2'>Du får inte skicka med såna grejer</p>";
+						$message .= "<p id='fieldtext2'>Du får inte skicka med sånt</p>";
 						break;
 				}			
 			

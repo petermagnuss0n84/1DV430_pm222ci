@@ -8,7 +8,7 @@ class BlogCommentArray{
 		
 	}
 	//Lägger till en kommentar i arrayen.
-	public function add(Blogcomment $blogcomment){
+	public function add(CommentArray $blogcomment){
 		$this->blogcomments[] = $blogcomment;
 	}
 	//Hämtar arrayen.
@@ -22,6 +22,7 @@ class CommentArray{
 	
 	private $id;
 	private $comment;
+	
 	
 	//En konstruktor.
 	public function __construct($id, $comment){
@@ -37,7 +38,6 @@ class CommentArray{
 	public function getComment(){
 		return $this->comment;
 	}
-	
 	
 	
 }

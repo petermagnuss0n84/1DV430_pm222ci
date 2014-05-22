@@ -1,5 +1,55 @@
-#form
+/*Header loginView*/
+
+#loginform
 {
-width: 200px;			
+	margin-left: 1320px;
+	margin-bottom: -20px;
+	padding-top: 10px;
+	width: 200px;	
+	border: none;
+}
+#login{
+	background-color: #322F2F;
+	height: 200px;
 }
 
+#loginname{
+	color: white;
+}
+#loginpassword{
+	color: white;
+}
+#loginremeberme{
+	color: white;
+}
+
+#logoutbutton{
+	margin-right: 10px;
+	margin-top: 10px;
+	float: right;
+}
+#startlink{
+	float:left;
+	padding-left:20px;
+	margin-top:171px;
+	color:white;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size:15px;
+	text-decoration: none
+}
+
+#startlink2{
+	float:left;
+	padding-left:20px;
+	color:white;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size:15px;
+	text-decoration: none
+}
+/*RegisterView*/
+
+/*PostView*/
+
+/*Commentview*/
+
+/*EditView*/

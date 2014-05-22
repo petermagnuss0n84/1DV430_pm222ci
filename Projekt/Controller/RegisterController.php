@@ -22,7 +22,7 @@ class RegisterController{
 				$this->message .=$registerView->Message(RegisterView::NAME_DOES_EXIST);
 				$this->error = TRUE;
 			}
-			//Kollar så att användaren har skrivit något namn.
+			//Kollar så att användaren har skrivit något användarnamn.
 			if($registerHandler->usernameIsEmpty($registerView->GetUsername())){
 				$this->message .=$registerView->Message(RegisterView::NAME_IS_EMPTY);
 				$this->error = TRUE;
@@ -32,7 +32,7 @@ class RegisterController{
 				$this->message .=$registerView->Message(RegisterView::PASS_IS_EMPTY);
 				$this->error = TRUE;
 			}
-			//Kollar om lösenorden matchar.
+			//Kollar om lösenorden matchar med varandra.
 			if($registerView->checkPasswords($registerView->GetPassword(), $registerView->GetPassword2())){
 				$this->message .=$registerView->Message(RegisterView::PASS_NOT_EQUAL);
 				$this->error = TRUE;
