@@ -14,18 +14,19 @@ class PostsView{
 
 	const DELETED = 0;
 
+	//Inläggen som visas för en vanlig användare.
 	public function ViewPosts($blogposts){
 		$ret = "";
 		foreach ($blogposts as $key => $value) {
 			
 			$ret .= '<div id="postsview">
-				<div></br></br></br>
-				<h2 id="titleview">'.nl2br($value->getTitle()).'</h2></br>
-				<p id="postview">'.nl2br($value->getPost()).'</p></br>
-				<p id="authorview">Skapad av:  '.$value->getAuthor().'</p>	
+				<div></br></br>
+				<h2 id="titlePostsView">'.nl2br($value->getTitle()).'</h2></br>
+				<p id="postPostsView">'.nl2br($value->getPost()).'</p></br>
+				<p id="authorPostsView">Skapad av:  '.$value->getAuthor().'</p>
 				</div>
 						
-				<a id="commentLink" href="' . $this->nav . $this->id . $value->getId() .'">Kommentera</a>
+				<a id="commentButton" href="' . $this->nav . $this->id . $value->getId() .'">Kommentera</a>
 				
 			</div>' ;		
 			}
@@ -37,20 +38,19 @@ class PostsView{
 	$ret = "";
 	foreach ($blogposts as $key => $value) {
 		
-		$ret .= '<div id="adminposts">
+		$ret .= '<div id="postsview">
 			<div>
-			</br></br>
+			</br>
 			<form action="" method="post">
 			  <input name="'.$this->deletePostID.'" type="hidden" value="'.$value->getId().'" />
 			  <input name="'.$this->deletePost.'" type="submit" id="deletebutton" value="X" />
 			  </form>
-			</br>
-
-			<h2 id="viewtitle">'.nl2br($value->getTitle()).'</h2></br>
-			<p id="viewpost">'.nl2br($value->getPost()).'</p></br>	
-			<p id="viewauthor">Skapad av:  '.$value->getAuthor().'</p>			
+			  <br>
+			<h2 id="titlePostsView">'.nl2br($value->getTitle()).'</h2></br>
+			<p id="postPostsView">'.nl2br($value->getPost()).'</p></br>	
+			<p id="authorPostsView">Skapad av:  '.$value->getAuthor().'</p>			
 			</div>
-			
+			<br>
 			<div id="commenteditButtons">
 			<a id="commentButton" href="' . $this->nav . $this->id . $value->getId() .'">Kommentarer</a>
 			<a id="editButton" href="' . $this->editNav . $this->id . $value->getId() .'">Redigera</a>
@@ -61,7 +61,7 @@ class PostsView{
 		}
 		return $ret;		
 	}
-
+	
 	public function DeletePost($deleteID)
 	 {
 			 return "<form action='' method='post'>

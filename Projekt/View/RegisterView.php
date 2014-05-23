@@ -8,7 +8,7 @@
 		private $password = 'password';
 		private $password2 = 'password2';
 		private $register = 'register';
-		private $nav = 'index.php';
+		//private $nav = 'index.php';
 
 		const USER_REGISTER = 0;
 		const NAME_DOES_EXIST = 1;
@@ -21,28 +21,23 @@
 			$ret = "
 				<div id='registerForm'>
 					<form method='POST'>
-					
-						
 						<div class=''>
-							<p>Användarnamn:</p>
+							<p id='registerLabel'>Användarnamn:</p>
 							<p><input type='text' name='$this->username' /></p>
 						</div>
-						
 						<div class=''>	
-							<p>Lösenord:</p>
+							<p id='registerLabel'>Lösenord:</p>
 							<p><input type='password' name='$this->password' /></p>
 						</div>
-						
 						<div class=''>	
-							<p>Repetera Lösenord:</p>
+							<p id='registerLabel'>Repetera Lösenord:</p>
 							<p><input type='password' name='$this->password2' /></p>
 						</div>
-						
+						<br>
 						<div class=''>	
 							<p><button name='$this->register' class='button' id='register'>Skapa användare</button></p>
 						</div>
-					</form>	
-					<a href ='$this->nav'>Logga in</a>
+					</form>
 				</div>";
 				return $ret;
 		}
@@ -86,32 +81,32 @@
 				
 				switch($n){
 					case self::USER_REGISTER:
-						$message .= "Du är nu registrerad";
+						$message .= "<p id='registerMessage'>Du är nu registrerad</p>";
 						break;
 						
 					case self::NAME_DOES_EXIST:
-						$message .= "Detta användarnamn är redan upptaget";
+						$message .= "<p id='registerMessage'>Detta användarnamn är redan upptaget</p>";
 						break;
 						
 					case self::NAME_IS_EMPTY:
-						$message .= "Ett användarnamn måste anges";
+						$message .= "<p id='registerMessage'>Ett användarnamn måste anges</p>";
 						break;
 						
 					case self::PASS_IS_EMPTY:
-						$message .= "Ett lösenord måste anges";
+						$message .= "<p id='registerMessage'>Ett lösenord måste anges</p>";
 						break;
 						
 					case self::PASS_NOT_EQUAL:
-						$message .= "Lösenorden stämmer inte överens";
+						$message .= "<p id='registerMessage'>Lösenorden stämmer inte överens</p>";
 						break;
 					case self::PASS_NOT_GOOD:
-						$message .= "Lösenordet måste innehålla sex tecken eller mer, minst en stor bokstav och siffra";
+						$message .= "<p id='registerMessage'>Lösenordet måste innehålla sex tecken eller mer <br> samt minst en stor bokstav och siffra</p>";
 						break;
 				}			
 			
 
 
-			return "<p class='message'> $message</p>";
+			return "<p> $message</p>";
 			
 		}
 	}

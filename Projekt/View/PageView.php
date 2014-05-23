@@ -60,7 +60,7 @@ class PageView{
              <meta http-equiv=\"content-type\" content=\"text/html; charset=$this->m_charset\" /> 
              $head
           </head> 
-          <body>
+          <body id='body'>
             $body
           </body>
         </html>";

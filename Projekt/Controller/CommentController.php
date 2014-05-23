@@ -10,6 +10,7 @@ class CommentController{
 
 	private $ret = "";
 	private $message = "";
+	private $commentsPosts ="";
 	private $error = FALSE;
 
 	public function DoControll(Database $db){
@@ -38,7 +39,8 @@ class CommentController{
 					$this->message .=$createCommentView->Message(CreateCommentView::DELETED);
 				}
 			}
-
+			
+		//Alla kommentarer som tillhör ett specifikt inlägg.
 		$comments = $commentsHandler->GetSpecificComments($postid);
 		foreach($comments->getBlogcomments() as $comment){
 
@@ -46,7 +48,7 @@ class CommentController{
 			if($loginHandler->LoggedInAsAdmin() === true){
 				$deletebutton = $createCommentView->DeleteComment($comment->getId());
 			}
-			$this->ret .= $createCommentView->ShowSpecificComments($comment, $deletebutton);
+			$this->commentsPosts .= $createCommentView->ShowSpecificComments($comment, $deletebutton);
 
 		}
 			//Meddelanden när man försöker kommentera.
@@ -65,11 +67,10 @@ class CommentController{
 			}		
 			if($this->error === FALSE){			
 				if($commentsHandler->CreateComment($createCommentView->GetComment(), $createCommentView->GetPostid())){
-					$this->message .= $createCommentView->Message(CreateCommentView::COMMENT_CREATED);		
+					$this->message .= $createCommentView->Message(CreateCommentView::COMMENT_CREATED);	
 				}
-			}
-						
+			}		
 		}
-		return $this->ret .$this->message;
+		return $this->ret .$this->message . $this->commentsPosts;
 	}
 }

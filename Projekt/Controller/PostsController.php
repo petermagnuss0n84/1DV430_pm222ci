@@ -1,7 +1,7 @@
 <?php
 
-require_once 'Model/PostsHandler.php';
 require_once 'View/PostsView.php';
+require_once 'Model/PostsHandler.php';
 require_once 'Model/LoginHandler.php';
 
 class PostsController{

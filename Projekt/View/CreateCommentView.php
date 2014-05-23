@@ -20,14 +20,12 @@ class CreateCommentView{
 
 	public function CreateComment(){
 				$ret = "
-				<div id=commentForm'>
-					<form method='POST'>
-						
+				<div id='commentForm'>
+					<form method='POST'>						
 						<div class=''>	
-							<p id='fieldtext'>Skriv en kommentar:</p>
-							<p><textarea type='text' name='$this->comment' rows='10' cols='70' id='commenttext' /></textarea></p>
-						</div>
-																								
+							<p id='commentPostLabel'>Skriv en kommentar:</p>
+							<p><textarea type='text' name='$this->comment' rows='10' cols='85' id='commenttext' /></textarea></p>
+						</div>																							
 						<div class=''>	
 							<p><button name='$this->createcommentbutton' class='button' id='button'>Kommentera</button></p>
 						</div>
@@ -39,14 +37,14 @@ class CreateCommentView{
 	public function ShowSpecificComments($comment, $deletebutton){
 		$ret = "";
 		
-		$ret .= "<div id='readcomments'>
+		$ret .= "<div id='viewComments'>
+			<div id=''>			
+				$deletebutton
+			</div>
 			<div></br>
-			<p id='commentfield'>".nl2br($comment->getComment())."</p></br>		
+			<p id='commentPost'>".nl2br($comment->getComment())."</p></br>		
 			</div>
 			</div>
-			</div>
-			<div id='deleteComment'>			
-			$deletebutton
 			</div>
 		</div>";
 
@@ -58,11 +56,11 @@ class CreateCommentView{
 	public function CommentPost($blogposts){
 		$ret = "";
 		
-		$ret .= "<div id='readcomments'>
-			<div></br>
-			<p id='commentfield'>".nl2br($blogposts->getTitle())."</p></br>
-			<p id='commentfield'>".nl2br($blogposts->getPost())."</p></br>		
-			<p id='commentfield'>".nl2br($blogposts->getAuthor())."</p></br>				
+		$ret .= "<div id='postsview'>
+			<div></br><br>
+			<h2 id='titlePostsView'>".nl2br($blogposts->getTitle())."</h2></br>
+			<p id='postPostsView'>".nl2br($blogposts->getPost())."</p></br>		
+			<p id='authorPostsView'>Skapad av: ".nl2br($blogposts->getAuthor())."</p></br>				
 			</div>
 			</div>
 			</div>
@@ -75,7 +73,7 @@ class CreateCommentView{
 	public function NotLoggedIn() {		
 			$ret = "
 				<div id='loggInToComment'>
-					<p>Du måste logga in för att kommentera</p>
+					<p id='commentLoginMessage'>Du måste logga in för att kommentera</p>
 				</div>";
 			return $ret;
 	}
@@ -85,7 +83,7 @@ class CreateCommentView{
 	 {
 			 return "<form action='' method='post'>
 			 <input name='$this->deleteCommentID' type='hidden' value='".$deleteID."' />
-			 <input name='$this->deleteComment' type='submit' id='commentDeletebutton' value='X' />
+			 <input name='$this->deleteComment' type='submit' id='deleteComment' value='X' />
 			 </form>"; 		
 	 }
 
@@ -129,22 +127,22 @@ class CreateCommentView{
 				
 				switch($n){
 					case self::COMMENT_CREATED:
-						$message .= "<p id='fieldtext2'>Inlägget är kommenterat</p>";
+						$message .= "<p id='commentMessage'>Inlägget är kommenterat</p>";
 						break;
 					case self::COMMENT_IS_EMPTY:
-						$message .= "<p id='fieldtext2'>Du måste skriva något i kommentarfältet</p>";
+						$message .= "<p id='commentMessage'>Du måste skriva något i kommentarfältet</p>";
 						break;
 					case self::NOT_LOGGED_IN:
-						$message .= "<p id='fieldtext2'>Du måste vara inloggad för att skriva en kommentar.</p>";
+						$message .= "<p id='commentMessage'>Du måste vara inloggad för att skriva en kommentar.</p>";
 						break;
 					case self::NO_HACK:
-						$message .= "<p id='fieldtext2'></p>";
+						$message .= "<p></p>";
 						break;
 					 case self::DELETED:
-						 $message .= "<p id='fieldtext2'>Kommentar raderad</p>";
+						 $message .= "<p id='commentMessage'>Kommentar raderad</p>";
 						 break;
 				}						
-			return "<p class='message'> $message</p>";
+			return "<p id='commentMessage'> $message</p>";
 			
 		}	
 }

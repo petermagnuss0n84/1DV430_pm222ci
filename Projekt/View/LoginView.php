@@ -1,4 +1,5 @@
 <?php
+
 require_once 'Model/LoginHandler.php';
 
 class LoginView{
@@ -22,10 +23,10 @@ class LoginView{
 		return "<div ><form id='login' action='index.php' method='get' accept-charset='UTF-8' >	
 				<fieldset id='loginform'>							
 				<input type='hidden' name='submitted' id='submitted' value='1'/>
-				<label for='username' id='loginname'>Användarnamn:</label>
-				<input type='text' name='$this->getUserName' id='username' width='50px' />
-				<label for='password' id='loginpassword'>Lösenord:</label>
-				<input type='password' name='$this->getPassword' id='password'  />
+				<label for='username' id='loginname'>Användarnamn:</label><br>
+				<input type='text' name='$this->getUserName' id='username' width='50px' /><br>
+				<label for='password' id='loginpassword'>Lösenord:</label><br>
+				<input type='password' name='$this->getPassword' id='password'  /><br>
 				<p  id='loginremeberme'>
 				<input type='submit' name='$this->login' value='Logga in' />
 				<input type='checkbox' name='$this->remember' value='RemeberMe' />Kom ihåg mig</p>
@@ -40,7 +41,7 @@ class LoginView{
 		//Retunerar utloggningsknappen
 		return "<div><form id='login' action='index.php' method='get' accept-charset='UTF-8'>
 				<a href='$this->start' id='startlink'>Startsidan</a>
-				<input type='submit' name='$this->logout' value='Logout' />
+				<input type='submit' name='$this->logout' value='Logga ut' id='logoutbutton' />
 				</form>
 				</div>";		
 	}
@@ -50,7 +51,7 @@ class LoginView{
 		return "<div><form id='login' action='index.php' method='get' accept-charset='UTF-8'>
 				<a href='$this->start' id='startlink'>Startsidan</a>
 				<a href='$this->admin' id='startlink'>Skapa nytt inlägg</a>
-				<input type='submit' name='$this->logout' value='Logout' id='logoutbutton'/>
+				<input type='submit' name='$this->logout' value='Logga ut' id='logoutbutton'/>
 				</form>
 				</div>";		
 	}
@@ -58,16 +59,16 @@ class LoginView{
 	public function Message($statusNumber){
 		//Skriver ut meddelanden beroende på vad användaren gör.	
 		if ($statusNumber == self::USER_LOGGED_IN) {
-			$msg ="Du är inloggad";
+			$msg ="<p id='loginmessage'>Du är inloggad</p>";
 		}
 		elseif ($statusNumber == self::ADMIN_LOGGED_IN) {
-			$msg ="Du är inloggad som admin";
+			$msg ="<p id='loginmessage'>Du är inloggad som admin</p>";
 		}
 		elseif ($statusNumber == self::USER_LOGGED_OUT) {
-			$msg ="Du är utloggad";
+			$msg ="<p id='loginmessage'>Du är utloggad</p>";
 		}
 		elseif ($statusNumber == self::USER_LOGGED_ERROR) {
-			$msg ="Fel Uppgifter";
+			$msg ="<p id='loginmessage'>Fel Uppgifter</p>";
 		}
 		return $msg;		
 	}

@@ -4,11 +4,7 @@ session_start();
 require_once 'DBConfig.php';
 require_once 'Database.php';
 require_once 'View/PageView.php';
-//require_once 'View/RegisterView.php';
 require_once 'View/NavigationView.php';
-//require_once 'View/CreateCommentView.php';
-//require_once 'Model/LoginHandler.php';
-//require_once 'Model/PostsHandler.php';
 require_once 'Controller/LoginController.php';
 require_once 'Controller/RegisterController.php';
 require_once 'Controller/CreatePostController.php';
@@ -44,7 +40,9 @@ class MasterController{
 		//Om användaren trycker på "Registrera dig" länken visas detta.
 		if($navigationView->navRegister()){
 			$registerController = new RegisterController();
-			$controller = $registerController->DoControll($db);			
+			$loginController = new LoginController();
+			$controller = $loginController->DoControll($db);
+			$controller .= $registerController->DoControll($db);			
 		}
 		//Om användaren trycker på kommentera länken visas detta.
 		if($navigationView->navComment()){
