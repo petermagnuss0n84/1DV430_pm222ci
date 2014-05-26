@@ -22,12 +22,14 @@ class CommentArray{
 	
 	private $id;
 	private $comment;
+	private $date;
 	
 	
 	//En konstruktor.
-	public function __construct($id, $comment){
+	public function __construct($id, $comment, $date){
 		$this->id = $id;
 		$this->comment = $comment;
+		$this->date = $date;
 		
 	}
 	
@@ -37,6 +39,10 @@ class CommentArray{
 	
 	public function getComment(){
 		return $this->comment;
+	}
+
+	public function getDate(){
+		return $this->date;
 	}
 	
 	

@@ -22,11 +22,11 @@ class CreateCommentView{
 				$ret = "
 				<div id='commentForm'>
 					<form method='POST'>						
-						<div class=''>	
+						<div>	
 							<p id='commentPostLabel'>Skriv en kommentar:</p>
 							<p><textarea type='text' name='$this->comment' rows='10' cols='85' id='commenttext' /></textarea></p>
 						</div>																							
-						<div class=''>	
+						<div>	
 							<p><button name='$this->createcommentbutton' class='button' id='button'>Kommentera</button></p>
 						</div>
 					</form>
@@ -38,14 +38,13 @@ class CreateCommentView{
 		$ret = "";
 		
 		$ret .= "<div id='viewComments'>
-			<div id=''>			
+			<div>			
 				$deletebutton
 			</div>
 			<div></br>
-			<p id='commentPost'>".nl2br($comment->getComment())."</p></br>		
-			</div>
-			</div>
-			</div>
+				<p id='commentPost'>".nl2br($comment->getComment())."</p>
+				<p id='dateCommentView'>".nl2br($comment->getDate())."</p>
+			</div></br></br>
 		</div>";
 
 	
@@ -60,7 +59,8 @@ class CreateCommentView{
 			<div></br><br>
 			<h2 id='titlePostsView'>".nl2br($blogposts->getTitle())."</h2></br>
 			<p id='postPostsView'>".nl2br($blogposts->getPost())."</p></br>		
-			<p id='authorPostsView'>Skapad av: ".nl2br($blogposts->getAuthor())."</p></br>				
+			<p id='authorPostsView'>Skapad av: ".nl2br($blogposts->getAuthor())."</p></br>
+			<p id='datePostsView'>".$blogposts->getDate()."</p></br>		
 			</div>
 			</div>
 			</div>

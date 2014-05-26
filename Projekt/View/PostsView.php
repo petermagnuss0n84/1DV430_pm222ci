@@ -23,10 +23,11 @@ class PostsView{
 				<div></br></br>
 				<h2 id="titlePostsView">'.nl2br($value->getTitle()).'</h2></br>
 				<p id="postPostsView">'.nl2br($value->getPost()).'</p></br>
-				<p id="authorPostsView">Skapad av:  '.$value->getAuthor().'</p>
+				<p id="authorPostsView">Skapad av:'.$value->getAuthor().'</p>
 				</div>
 						
-				<a id="commentButton" href="' . $this->nav . $this->id . $value->getId() .'">Kommentera</a>
+				<a id="commentButton" href="' . $this->nav . $this->id . $value->getId() .'">Kommentera</a></br></br>
+				<p id="datePostsView">'.$value->getDate().'</p>
 				
 			</div>' ;		
 			}
@@ -48,13 +49,13 @@ class PostsView{
 			  <br>
 			<h2 id="titlePostsView">'.nl2br($value->getTitle()).'</h2></br>
 			<p id="postPostsView">'.nl2br($value->getPost()).'</p></br>	
-			<p id="authorPostsView">Skapad av:  '.$value->getAuthor().'</p>			
+			<p id="authorPostsView">Skapad av:'.$value->getAuthor().'</p>
 			</div>
 			<br>
 			<div id="commenteditButtons">
 			<a id="commentButton" href="' . $this->nav . $this->id . $value->getId() .'">Kommentarer</a>
-			<a id="editButton" href="' . $this->editNav . $this->id . $value->getId() .'">Redigera</a>
-				 	 	
+			<a id="editButton" href="' . $this->editNav . $this->id . $value->getId() .'">Redigera</a></br></br>
+			<p id="datePostsView">'.$value->getDate().'</p>	
 			</div>
 			
 		</div>' ;		

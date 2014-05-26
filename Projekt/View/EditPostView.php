@@ -19,22 +19,22 @@ class EditPostView{
 
 	public function EditPostForm($blogpost){
 			$ret = '
-				<div id="blogpostForm">
+				<div id="editPostForm">
 					<form method="POST">										
-						<div class="">
-							<p id="fieldtext">Titel:</p>
-							<p><input type="text" id="blogposttitle" name="'.$this->title.'" value="'.$blogpost->getTitle().'" /></p>
+						<div>
+							<p id="editPostLabel">Titel:</p>
+							<p><input type="text" id="editPostTitleForm" name="'.$this->title.'" value="'.$blogpost->getTitle().'" /></p>
 						</div>					
 						<div class="">
-							<p id="fieldtext">Text:</p>
-							<p><textarea type="text" id="blogposttext" name="'.$this->post.'"  rows="20" cols="80"/>'.$blogpost->getPost().'</textarea></p>
+							<p id="editPostLabel">Text:</p>
+							<p><textarea type="text" id="editPostText" name="'.$this->post.'"  rows="20" cols="90"/>'.$blogpost->getPost().'</textarea></p>
 						</div>					
 						<div class="">	
-							<p id="fieldtext">Författare:</p>
-							<p><input type="text" id="blogpostauthor" name="'.$this->author.'" value="'.$blogpost->getAuthor().'"" /></p>
+							<p id="editPostLabel">Författare:</p>
+							<p><input type="text" id="editPostAuthor" name="'.$this->author.'" value="'.$blogpost->getAuthor().'"" /></p>
 						</div>									
 						<div class="">	
-							<p><button name="'.$this->postbutton.'" class="button" id="button"">Redigera inlägg</button></p>
+							<p><button name="'.$this->postbutton.'" class="button" id="editPostButton"">Redigera inlägg</button></p>
 						</div>				
 					</form>						
 				</div>';

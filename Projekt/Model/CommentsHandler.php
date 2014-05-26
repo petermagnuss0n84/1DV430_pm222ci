@@ -30,7 +30,7 @@ class CommentsHandler{
 
 	public function GetSpecificComments($postid){
 		
-		$sqlQuery = "SELECT comments.id, comments.comment
+		$sqlQuery = "SELECT comments.id, comments.comment, comments.date
 					FROM comments INNER JOIN posts ON posts.id = comments.postid 
 					WHERE postid = ? ORDER BY id Desc";
 		
@@ -41,13 +41,13 @@ class CommentsHandler{
 		
 		$this->db->Execute($stmt);
 		
-		if ($stmt->bind_result($id, $comment) == FALSE) {
+		if ($stmt->bind_result($id, $comment, $date) == FALSE) {
             throw new \Exception($this->mysqli->error);
         }
 		
         $ret = new BlogCommentArray();
         while ($stmt->fetch()) {
-        	$ret->add(new CommentArray($id, $comment));
+        	$ret->add(new CommentArray($id, $comment, $date));
         }
                 
         $stmt->close();
@@ -74,35 +74,6 @@ class CommentsHandler{
 			return false;
 		}		
 	}
-
-		//TODO skriv om denna så att den hämta inlägget som tillhör alla kommentarer.
-		// public function GetSpecificPost($postid){
-		
-		// $sqlQuery = "SELECT comments.id, posts.title, posts.post, posts.author
-		// 			FROM comments INNER JOIN posts ON posts.id = comments.postid 
-		// 			WHERE postid = ? ORDER BY id Desc";
-		
-		
-		// $stmt = $this->db->Prepare($sqlQuery);
-						
-		// $stmt->bind_param('i', $postid);
-		
-		// $this->db->Execute($stmt);
-		
-		// if ($stmt->bind_result($id, $title, $post, $author) == FALSE) {
-  //           throw new \Exception($this->mysqli->error);
-  //       }
-		
-  //      while ($stmt->fetch()) {
-		// 	//Hämntar ifrån PostArray.php.
-		// 	$blogpost = new PostArray($id, $title, $post, $author);
-			
-		// 	$blogposts[] = $blogpost;
-		// }
-		// $stmt->close();
-		// return $blogposts;
-				
-	//}
 
 	//Kollar så att användaren har skrivit en kommentar
 	public function commentIsEmpty($comment){

@@ -19,27 +19,27 @@ class CreatePostView{
 	public function CreatePostForm(){
 			$ret = "<div id='createPostForm'>
 					<form method='POST'>					
-					<div class=''>
-						<p id='fieldtext'>Titel:</p>
-						<p><input type='text' id='posttitle' name='$this->title' /></p>
+					<div>
+						<p id='createPostLabel'>Titel:</p>
+						<p><input type='text' id='createPostTitleForm' name='$this->title' /></p>
 					</div>
-					<div class=''>	
-						<p id='fieldtext'>Text:</p>
+					<div>	
+						<p id='createPostLabel'>Text:</p>
 						<p><textarea type='text' id='posttext' name='$this->post' rows='20' cols='90'/></textarea></p>
 					</div>
-					<div class=''>	
-						<p id='fieldtext'>Författare:</p>
+					<div>	
+						<p id='createPostLabel'>Författare:</p>
 						<p><input type='text' id='postauthor' name='$this->author' /></p>
 					</div>					
-					<div class=''>	
+					<div>	
 						<p><button name='$this->postbutton' class='button' id='button'>Skapa inlägg</button></p>
 					</div>
-					<div>
+					<!-- <div>
 						<p><select name='dropdown'>
     					
     					<option value=''></option>
     					</select></p>
-					</div>
+					</div> -->
 					</form>						
 				</div>";
 				return $ret;

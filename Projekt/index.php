@@ -69,5 +69,4 @@ class MasterController{
 }
 echo MasterController::DoControll();
 
-
 ?>

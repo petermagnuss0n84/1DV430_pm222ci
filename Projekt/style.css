@@ -20,14 +20,17 @@
 }
 
 #loginname{
+	font-family: Trebuchet MS, Helvetica, sans-serif;
 	color: white;
 	font-size: 12px;
 }
 #loginpassword{
+	font-family: Trebuchet MS, Helvetica, sans-serif;
 	color: white;
 	font-size: 12px;
 }
 #loginremeberme{
+	font-family: Trebuchet MS, Helvetica, sans-serif;
 	color: white;
 	font-size: 12px;
 }
@@ -126,6 +129,11 @@
 	float: right;
 }
 
+#datePostsView{
+	float: right;
+	padding-left: 500px;
+}
+
 #commentButton{
 	text-decoration: none;
 	color: white;
@@ -179,6 +187,7 @@
 	margin-left:380px;
 	margin-bottom:1px; 
 	margin-top:18px;
+	border-radius: 7px;
 }
 
 #deleteComment{
@@ -213,6 +222,60 @@
 	padding-top: 5px;
 }
 
+#dateCommentView{
+	float: right;
+}
+
 /*CreatePostView*/
 
+#createPostForm{
+	background-color: white;
+	padding-left: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 300px;
+	margin-right: 300px;
+	margin-top: 20px;
+}
+
+#createPostLabel{
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+#createPostTitleForm{
+	width: 400px;
+}
 /*EditPostView*/
+
+#editPostForm{
+	background-color: white;
+	padding-left: 100px;
+	padding-top: 50px;
+	padding-bottom: 50px;
+	margin-left: 300px;
+	margin-right: 300px;
+	margin-top: 20px;
+}
+
+#editPostTitleForm{
+	width: 400px;
+}
+
+#editPostButton{
+	text-decoration: none;
+	color: white;
+	background-color: #3399FF;
+	padding-left: 7px;
+	padding-right: 7px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	border-radius: 5px;
+}
+
+#editPostLabel{
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}

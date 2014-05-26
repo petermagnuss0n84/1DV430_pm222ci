@@ -49,17 +49,17 @@ class PostsHandler{
 	}
 	//Funktion för att hämta alla inlägg.
 	public function GetPosts(){
-		$sqlQuery = "SELECT id, title, post, author From posts ORDER BY id DESC";
+		$sqlQuery = "SELECT id, title, post, author, date From posts ORDER BY id DESC";
 
 		$stmt = $this->db->Prepare($sqlQuery);
 
 		$this->db->Execute($stmt);
 
-		$stmt->bind_result($id, $title, $post, $author);
+		$stmt->bind_result($id, $title, $post, $author, $date);
 
 		while ($stmt->fetch()) {
 			//Hämntar ifrån PostArray.php.
-			$blogpost = new PostArray($id, $title, $post, $author);
+			$blogpost = new PostArray($id, $title, $post, $author, $date);
 			
 			$blogposts[] = $blogpost;
 		}
@@ -99,7 +99,7 @@ class PostsHandler{
 
 	public function GetSpecificPost($id){
 		
-		$sqlQuery = "SELECT id, title, post, author FROM posts WHERE id = ? ORDER BY Id Desc";
+		$sqlQuery = "SELECT id, title, post, author, date FROM posts WHERE id = ? ORDER BY Id Desc";
 		
 		$stmt = $this->db->Prepare($sqlQuery);
 		
@@ -107,11 +107,11 @@ class PostsHandler{
 		
 		$this->db->Execute($stmt);
 		
-		if ($stmt->bind_result($id, $title, $post, $author) == FALSE) {
+		if ($stmt->bind_result($id, $title, $post, $author, $date) == FALSE) {
         		throw new \Exception($this->mysqli->error);
         }
 		if ($stmt->fetch()) {
-           	$ret = new PostArray($id, $title, $post, $author);
+           	$ret = new PostArray($id, $title, $post, $author, $date);
                         
         } else {
         	throw new \Exception("Could not find post $id");

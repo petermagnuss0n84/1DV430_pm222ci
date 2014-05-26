@@ -22,23 +22,23 @@ class CommentController{
 		$id = $_GET['id'];
 
 		//Visar det inlägg som är kopplat till kommentarerna.
-		$blogposts = $postsHandler->GetSpecificPost($id);
-		$this->ret = $createCommentView->CommentPost($blogposts);
+		$blogpost = $postsHandler->GetSpecificPost($id);
+		$this->ret = $createCommentView->CommentPost($blogpost);
 
 		//Skapar kommentarfomuläret endast om man är inloggad.
 		if($loginHandler->IsLoggedIn() === true){
 			$this->ret .= $createCommentView->CreateComment();
 		}
-		else {
+		else{
 			$this->ret .= $createCommentView->NotLoggedIn();
 		}
 
 		//Gör ett försök att raderar kommentaren.
 		if($createCommentView->TriedToDeleteComment()){
-				if($commentsHandler->DeleteComment($createCommentView->DeleteCommentID())){
-					$this->message .=$createCommentView->Message(CreateCommentView::DELETED);
-				}
+			if($commentsHandler->DeleteComment($createCommentView->DeleteCommentID())){
+				$this->message .=$createCommentView->Message(CreateCommentView::DELETED);
 			}
+		}
 			
 		//Alla kommentarer som tillhör ett specifikt inlägg.
 		$comments = $commentsHandler->GetSpecificComments($postid);
@@ -49,7 +49,6 @@ class CommentController{
 				$deletebutton = $createCommentView->DeleteComment($comment->getId());
 			}
 			$this->commentsPosts .= $createCommentView->ShowSpecificComments($comment, $deletebutton);
-
 		}
 			//Meddelanden när man försöker kommentera.
 		if($createCommentView->TriedToComment()){		
