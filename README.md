@@ -5,7 +5,8 @@ Individuellt mjukvaruutvecklingsprojekt
 
 Url: www.hejpeter.se
 
-Inloggningsuppgifter f�r admin
+Inloggningsuppgifter för admin
 
-Anv�ndarnamn: admin </br>
-L�senord: Pass123
+Användarnamn: admin 
+
+Lösenord: Pass123
