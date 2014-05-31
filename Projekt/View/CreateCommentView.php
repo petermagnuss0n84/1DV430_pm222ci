@@ -108,6 +108,7 @@ class CreateCommentView{
 			return $_GET[$this->id];
 		}
 	}
+
 	//Tar bort en specifik kommentar.
 	public function DeleteCommentID(){
 		 if(isset ($_POST[$this->deleteCommentID])){

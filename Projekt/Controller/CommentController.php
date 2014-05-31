@@ -1,6 +1,7 @@
 <?php
 
 require_once 'View/CreateCommentView.php';
+//require_once 'View/LoginView.php';
 require_once 'Model/CommentsHandler.php';
 require_once 'Model/LoginHandler.php';
 require_once 'Model/PostsHandler.php';
@@ -15,6 +16,7 @@ class CommentController{
 
 	public function DoControll(Database $db){
 		$createCommentView = new CreateCommentView();
+		//$loginView = new LoginView();
 		$commentsHandler = new CommentsHandler($db);
 		$loginHandler = new LoginHandler($db);
 		$postsHandler = new PostsHandler($db);

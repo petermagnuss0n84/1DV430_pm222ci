@@ -44,7 +44,7 @@ class RegisterController{
 			}
 			
 			if($this->error === FALSE){
-				if($registerHandler->RegisterUser($registerView->GetUsername(), $registerView->GetPassword())){
+				if($registerHandler->RegisterUser($registerView->GetUsername(), md5($registerView->GetPassword()))){
 					$this->message .=$registerView->Message(RegisterView::USER_REGISTER);
 				}
 			}

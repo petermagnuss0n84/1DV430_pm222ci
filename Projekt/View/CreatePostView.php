@@ -7,7 +7,8 @@ class CreatePostView{
 	private $title = "title";
 	private $post = "post";
 	private $author ="author";
-	private $categorypick ="categorypick";
+	private $picture ="picture";
+	//private $categorypick ="categorypick";
 	private $postbutton ="postbutton";
 
 		const POST_CREATED = 0;
@@ -30,7 +31,11 @@ class CreatePostView{
 					<div>	
 						<p id='createPostLabel'>Författare:</p>
 						<p><input type='text' id='postauthor' name='$this->author' /></p>
-					</div>					
+					</div>
+					<!-- <div>	
+						<p id='createPostLabel'>Bild:</p>
+						<p><input type='file' id='postpicture' name='$this->picture' /></p>
+					</div> -->					
 					<div>	
 						<p><button name='$this->postbutton' class='button' id='button'>Skapa inlägg</button></p>
 					</div>
@@ -69,6 +74,11 @@ class CreatePostView{
 			return $_POST[$this->author];
 		}
 	}
+	// public function GetPicture(){
+	// 	if(isset($_POST[$this->picture])){
+	// 		return $_POST[$this->picture];
+	// 	}
+	// }
 	//Funktion till skapa inlägg knappen
 	public function TriedToPost(){
 		if(isset($_POST[$this->postbutton])){
@@ -87,7 +97,7 @@ class CreatePostView{
 						break;
 						
 					case self::TITLE_IS_EMPTY:
-						$message .= "<p id='fieldtext2'> En title saknas </p>";
+						$message .= "<p id='fieldtext2'> En titel saknas</p>";
 						break;
 						
 					case self::POST_IS_EMPTY:
@@ -98,7 +108,7 @@ class CreatePostView{
 						$message .= "<p id='fieldtext2'>Du måste ange en författare</p>";
 						break;
 					case self::NO_HACK:
-						$message .= "<p id='fieldtext2'>Du får inte skicka med såna grejer</p>";
+						$message .= "<p id='fieldtext2'></p>";
 						break;
 				}			
 			

@@ -88,8 +88,10 @@ class LoginView{
 	
 	//Returnerar lösenordet som användaren har skrivit.
 	public function GetPassword(){
-		if (isset($_GET[$this->getPassword]) == true){
-			return $_GET[$this->getPassword];
+		$password = $_GET[$this->getPassword];
+		$md5_password = md5($password);
+		if (isset($md5_password) == true){
+			return $md5_password;
 		}
 		else
 		{

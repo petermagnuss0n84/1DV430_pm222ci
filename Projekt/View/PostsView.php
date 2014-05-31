@@ -48,6 +48,7 @@ class PostsView{
 			  </form>
 			  <br>
 			<h2 id="titlePostsView">'.nl2br($value->getTitle()).'</h2></br>
+			
 			<p id="postPostsView">'.nl2br($value->getPost()).'</p></br>	
 			<p id="authorPostsView">Skapad av:'.$value->getAuthor().'</p>
 			</div>
@@ -97,3 +98,4 @@ class PostsView{
 		}	
 
 }
+//<p ><img src="'.$value->getPicture().'" /></p>

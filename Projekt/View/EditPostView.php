@@ -100,7 +100,7 @@ class EditPostView{
 						$message .= "<p id='fieldtext2'>Du måste ange en författare</p>";
 						break;
 					case self::NO_HACK:
-						$message .= "<p id='fieldtext2'>Du får inte skicka med sånt</p>";
+						$message .= "<p id='fieldtext2'></p>";
 						break;
 				}			
 			
