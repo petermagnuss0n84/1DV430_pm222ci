@@ -1,7 +1,7 @@
 <?php
 
 require_once 'View/CreateCommentView.php';
-//require_once 'View/LoginView.php';
+require_once 'View/PostsView.php';
 require_once 'Model/CommentsHandler.php';
 require_once 'Model/LoginHandler.php';
 require_once 'Model/PostsHandler.php';
@@ -16,7 +16,7 @@ class CommentController{
 
 	public function DoControll(Database $db){
 		$createCommentView = new CreateCommentView();
-		//$loginView = new LoginView();
+		$postsView = new PostsView();
 		$commentsHandler = new CommentsHandler($db);
 		$loginHandler = new LoginHandler($db);
 		$postsHandler = new PostsHandler($db);
@@ -25,7 +25,8 @@ class CommentController{
 
 		//Visar det inlägg som är kopplat till kommentarerna.
 		$blogpost = $postsHandler->GetSpecificPost($id);
-		$this->ret = $createCommentView->CommentPost($blogpost);
+		$this->ret = $postsView->CategoryView();
+		$this->ret .= $createCommentView->CommentPost($blogpost);
 
 		//Skapar kommentarfomuläret endast om man är inloggad.
 		if($loginHandler->IsLoggedIn() === true){

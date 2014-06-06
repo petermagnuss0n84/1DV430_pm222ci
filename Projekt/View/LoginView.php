@@ -13,6 +13,7 @@ class LoginView{
 	private $admin = '?Admin';
 	private $start = 'index.php';
 	
+	
 	const USER_LOGGED_IN = 1;
 	const USER_LOGGED_OUT = 2;
 	const USER_LOGGED_ERROR = 3;
@@ -33,6 +34,7 @@ class LoginView{
 				<a href='$this->nav'>Registrera dig</a>
 				</fieldset>
 				<a href='$this->start' id='startlink2'>Startsidan</a>
+				
 				</form>		
 				</div>";
 	}

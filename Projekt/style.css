@@ -72,6 +72,27 @@
 	border-radius:0px 0px 5px 5px;
 }
 
+#categoryMenu{
+	height: 35px;
+	width: 450px;
+	margin-left: 535px;
+	margin-top: 4px;
+	padding-left: 15px;
+	background-color: #322F2F;
+	border-radius:5px 5px 5px 5px;
+	font-size: 10px;
+}
+
+#categoryLink{
+	float:left;
+	margin-top: 9px;
+	padding-left:20px;
+	color:white;
+	font-family: Trebuchet MS, Helvetica, sans-serif;
+	font-size:12px;
+	text-decoration: none
+}
+
 /*RegisterView*/
 
 #registerLabel{

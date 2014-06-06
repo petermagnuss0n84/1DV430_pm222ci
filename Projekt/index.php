@@ -51,13 +51,55 @@ class MasterController{
 			$controller = $loginController->DoControll($db);
 			$controller .= $commentController->DoControll($db);
 		}
-		//Om användaren trycker på kommentera länken visas detta.
+		//Om admin trycker på redigera vissas detta.
 		if($navigationView->navEdit()){
 			$editPostController = new EditPostController();
 			$loginController = new LoginController();
 			$controller = $loginController->DoControll($db);
 			$controller .= $editPostController->DoControll($db);
 		}
+		//Om användaren trycker på Windowskategorin vissas detta.
+		if($navigationView->navWindows()){
+			$loginController = new LoginController();
+			$postsController = new PostsController();
+			$controller = $loginController->DoControll($db);
+			$controller .= $postsController->DoControllWindows($db);
+		}	
+		//Om användaren trycker på Androidkategorin vissas detta.
+		if($navigationView->navAndroid()){
+			$loginController = new LoginController();
+			$postsController = new PostsController();
+			$controller = $loginController->DoControll($db);
+			$controller .= $postsController->DoControllAndroid($db);
+		}	
+		//Om användaren trycker på Spelkategorin vissas detta.
+		if($navigationView->navSpel()){
+			$loginController = new LoginController();
+			$postsController = new PostsController();
+			$controller = $loginController->DoControll($db);
+			$controller .= $postsController->DoControllGames($db);
+		}	
+		//Om användaren trycker på iOSkategorin vissas detta.
+		if($navigationView->navIos()){
+			$loginController = new LoginController();
+			$postsController = new PostsController();
+			$controller = $loginController->DoControll($db);
+			$controller .= $postsController->DoControllIos($db);
+		}
+		//Om användaren trycker på WindowsPhonekategorin vissas detta.
+		if($navigationView->navWindowsPhone()){
+			$loginController = new LoginController();
+			$postsController = new PostsController();
+			$controller = $loginController->DoControll($db);
+			$controller .= $postsController->DoControllWindowsPhone($db);
+		}		
+		//Om användaren trycker på Webbkategorin vissas detta.
+		if($navigationView->navWebb()){
+			$loginController = new LoginController();
+			$postsController = new PostsController();
+			$controller = $loginController->DoControll($db);
+			$controller .= $postsController->DoControllWebb($db);
+		}	
 		
 		
 		return $body = $pageView->GetXHTML10StrictPage("IT News", $controller);

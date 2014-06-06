@@ -8,7 +8,7 @@ class CreatePostView{
 	private $post = "post";
 	private $author ="author";
 	private $picture ="picture";
-	//private $categorypick ="categorypick";
+	private $category ="category";
 	private $postbutton ="postbutton";
 
 		const POST_CREATED = 0;
@@ -32,19 +32,19 @@ class CreatePostView{
 						<p id='createPostLabel'>Författare:</p>
 						<p><input type='text' id='postauthor' name='$this->author' /></p>
 					</div>
-					<!-- <div>	
-						<p id='createPostLabel'>Bild:</p>
-						<p><input type='file' id='postpicture' name='$this->picture' /></p>
-					</div> -->					
+					<div>
+						<p><select name='$this->category'>
+    					<option value='1'>Windows</option>
+  						<option value='2'>Android</option>
+  						<option value='3'>Spel</option>
+  						<option value='4'>iOS</option>
+  						<option value='5'>Windows Phone</option>
+  						<option value='6'>Webb</option>
+    					</select></p>
+					</div>
 					<div>	
 						<p><button name='$this->postbutton' class='button' id='button'>Skapa inlägg</button></p>
 					</div>
-					<!-- <div>
-						<p><select name='dropdown'>
-    					
-    					<option value=''></option>
-    					</select></p>
-					</div> -->
 					</form>						
 				</div>";
 				return $ret;
@@ -74,11 +74,14 @@ class CreatePostView{
 			return $_POST[$this->author];
 		}
 	}
-	// public function GetPicture(){
-	// 	if(isset($_POST[$this->picture])){
-	// 		return $_POST[$this->picture];
-	// 	}
-	// }
+	//Hämtar en kategori
+	public function GetCategory(){
+		if(isset ($_POST[$this->category]))
+
+		{
+			return $_POST[$this->category];
+		}
+	}
 	//Funktion till skapa inlägg knappen
 	public function TriedToPost(){
 		if(isset($_POST[$this->postbutton])){

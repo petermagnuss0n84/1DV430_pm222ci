@@ -5,7 +5,7 @@
 		//Sträng utan visning av html och javascript.
 		public function Strings($strings)
 		{
-			$regex = "/^[a-öA-Ö0-9_.,-:;<>'´=*?!\/\(\")\\ ]{1,}$/m";
+			$regex = "/^[a-öA-Ö0-9_.,-:;%<>'´=*?!\/\(\")\\ ]{1,}$/m";
 			
 			//regulärtutryck som inte kan ta in html och javascript.
 			if (preg_match($regex, $strings)) {

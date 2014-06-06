@@ -2,7 +2,6 @@
 
 require_once 'Validate.php';
 require_once 'PostArray.php';
-require_once 'CategoryArray.php';
 
 class PostsHandler{
 
@@ -15,51 +14,147 @@ class PostsHandler{
 		$this->validate = new Validate();
 	}
 
-	public function CreatePost($title, $post, $author){
+	public function CreatePost($title, $post, $author, $category){
 
-		$sqlQuery = "INSERT INTO posts(title, post, author) VALUES(?, ?, ?)";
+		$sqlQuery = "INSERT INTO posts(title, post, author, category) VALUES(?, ?, ?, ?)";
 
 		$stmt = $this->db->Prepare($sqlQuery);
 		
-		$stmt->bind_param('sss', $title, $post, $author);
+		$stmt->bind_param('ssss', $title, $post, $author, $category);
 		
 		if($this->db->Execute($stmt) === TRUE){
 			return TRUE;
 		}
 			return FALSE;
 	}
-	//Funktion för att hämnta alla kategorier för att fylla dropdownlistan när ett inlägg ska skapas.
-	public function GetCategory(){
-		$sqlQuery = "SELECT id, category FROM category ORDER BY id DESC";
-		
-		$stmt = $this->db->Prepare($sqlQuery);
-			
-		$this->db->Execute($stmt);
-		
-		$stmt->bind_result($id, $category);
-
-		while ($stmt->fetch()) {
-			//Hämntar ifrån CategoryArray.php.
-			$category = new CategoryArray($id, $category);
-			
-			$categorys[] = $category;
-		}
-		$stmt->close();
-		return $categorys;
-	}
+	
 	//Funktion för att hämta alla inlägg.
 	public function GetPosts(){
-		$sqlQuery = "SELECT id, title, post, author, date From posts ORDER BY id DESC";
+		$sqlQuery = "SELECT id, title, post, author, date, category From posts ORDER BY id DESC";
 
 		$stmt = $this->db->Prepare($sqlQuery);
 
 		$this->db->Execute($stmt);
 
-		$stmt->bind_result($id, $title, $post, $author, $date);
+		$stmt->bind_result($id, $title, $post, $author, $date, $category);
 
 		while ($stmt->fetch()) {
 			//Hämntar ifrån PostArray.php.
-			$blogpost = new PostArray($id, $title, $post, $author, $date);
+			$blogpost = new PostArray($id, $title, $post, $author, $date, $category);
+			
+			$blogposts[] = $blogpost;
+		}
+		$stmt->close();
+		return $blogposts;
+	}
+
+	public function GetSpecificWindowsPosts(){
+		$sqlQuery = "SELECT id, title, post, author, date, category From posts WHERE category IN (1) ORDER BY id DESC";
+
+		$stmt = $this->db->Prepare($sqlQuery);
+
+		$this->db->Execute($stmt);
+
+		$stmt->bind_result($id, $title, $post, $author, $date, $category);
+
+		while ($stmt->fetch()) {
+			//Hämntar ifrån PostArray.php.
+			$blogpost = new PostArray($id, $title, $post, $author, $date, $category);
+			
+			$blogposts[] = $blogpost;
+		}
+		$stmt->close();
+		return $blogposts;
+	}
+
+	public function GetSpecificAndroidPosts(){
+		$sqlQuery = "SELECT id, title, post, author, date, category From posts WHERE category IN (2) ORDER BY id DESC";
+
+		$stmt = $this->db->Prepare($sqlQuery);
+
+		$this->db->Execute($stmt);
+
+		$stmt->bind_result($id, $title, $post, $author, $date, $category);
+
+		while ($stmt->fetch()) {
+			//Hämntar ifrån PostArray.php.
+			$blogpost = new PostArray($id, $title, $post, $author, $date, $category);
+			
+			$blogposts[] = $blogpost;
+		}
+		$stmt->close();
+		return $blogposts;
+	}
+
+	public function GetSpecificGamesPosts(){
+		$sqlQuery = "SELECT id, title, post, author, date, category From posts WHERE category IN (3) ORDER BY id DESC";
+
+		$stmt = $this->db->Prepare($sqlQuery);
+
+		$this->db->Execute($stmt);
+
+		$stmt->bind_result($id, $title, $post, $author, $date, $category);
+
+		while ($stmt->fetch()) {
+			//Hämntar ifrån PostArray.php.
+			$blogpost = new PostArray($id, $title, $post, $author, $date, $category);
+			
+			$blogposts[] = $blogpost;
+		}
+		$stmt->close();
+		return $blogposts;
+	}
+
+	public function GetSpecificIosPosts(){
+		$sqlQuery = "SELECT id, title, post, author, date, category From posts WHERE category IN (4) ORDER BY id DESC";
+
+		$stmt = $this->db->Prepare($sqlQuery);
+
+		$this->db->Execute($stmt);
+
+		$stmt->bind_result($id, $title, $post, $author, $date, $category);
+
+		while ($stmt->fetch()) {
+			//Hämntar ifrån PostArray.php.
+			$blogpost = new PostArray($id, $title, $post, $author, $date, $category);
+			
+			$blogposts[] = $blogpost;
+		}
+		$stmt->close();
+		return $blogposts;
+	}
+
+	public function GetSpecificWindowsPhonePosts(){
+		$sqlQuery = "SELECT id, title, post, author, date, category From posts WHERE category IN (5) ORDER BY id DESC";
+
+		$stmt = $this->db->Prepare($sqlQuery);
+
+		$this->db->Execute($stmt);
+
+		$stmt->bind_result($id, $title, $post, $author, $date, $category);
+
+		while ($stmt->fetch()) {
+			//Hämntar ifrån PostArray.php.
+			$blogpost = new PostArray($id, $title, $post, $author, $date, $category);
+			
+			$blogposts[] = $blogpost;
+		}
+		$stmt->close();
+		return $blogposts;
+	}
+
+	public function GetSpecificWebbPosts(){
+		$sqlQuery = "SELECT id, title, post, author, date, category From posts WHERE category IN (6) ORDER BY id DESC";
+
+		$stmt = $this->db->Prepare($sqlQuery);
+
+		$this->db->Execute($stmt);
+
+		$stmt->bind_result($id, $title, $post, $author, $date, $category);
+
+		while ($stmt->fetch()) {
+			//Hämntar ifrån PostArray.php.
+			$blogpost = new PostArray($id, $title, $post, $author, $date, $category);
 			
 			$blogposts[] = $blogpost;
 		}
@@ -99,7 +194,7 @@ class PostsHandler{
 
 	public function GetSpecificPost($id){
 		
-		$sqlQuery = "SELECT id, title, post, author, date FROM posts WHERE id = ? ORDER BY Id Desc";
+		$sqlQuery = "SELECT id, title, post, author, date, category FROM posts WHERE id = ? ORDER BY Id Desc";
 		
 		$stmt = $this->db->Prepare($sqlQuery);
 		
@@ -107,11 +202,11 @@ class PostsHandler{
 		
 		$this->db->Execute($stmt);
 		
-		if ($stmt->bind_result($id, $title, $post, $author, $date) == FALSE) {
+		if ($stmt->bind_result($id, $title, $post, $author, $date, $category) == FALSE) {
         		throw new \Exception($this->mysqli->error);
         }
 		if ($stmt->fetch()) {
-           	$ret = new PostArray($id, $title, $post, $author, $date);
+           	$ret = new PostArray($id, $title, $post, $author, $date, $category);
                         
         } else {
         	throw new \Exception("Could not find post $id");

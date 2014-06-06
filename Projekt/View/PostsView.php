@@ -11,6 +11,12 @@ class PostsView{
 	private $editNav ="?Edit";
 	private $deletePostID = "deletePostID";
 	private $deletePost ="deletePost";
+	private $windows = '?Windows';
+	private $android = '?Android';
+	private $spel = '?Spel';
+	private $ios = '?iOS';
+	private $wp = '?WP';
+	private $webb = '?Webb';
 
 	const DELETED = 0;
 
@@ -63,6 +69,20 @@ class PostsView{
 		}
 		return $ret;		
 	}
+	//Alla kategorilänkar
+	public function CategoryView(){
+		$ret="
+		<div id='categoryMenu'>
+			<a href='$this->windows' id='categoryLink'>Windows |</a>
+			<a href='$this->android' id='categoryLink'>Android |</a>
+			<a href='$this->spel' id='categoryLink'>Spel |</a>
+			<a href='$this->ios' id='categoryLink'>iOS |</a>
+			<a href='$this->wp' id='categoryLink'>Windows Phone |</a>
+			<a href='$this->webb' id='categoryLink'>Webb</a>
+		</div>";
+
+		return $ret;
+	}
 	
 	public function DeletePost($deleteID)
 	 {
@@ -98,4 +118,3 @@ class PostsView{
 		}	
 
 }
-//<p ><img src="'.$value->getPicture().'" /></p>

@@ -10,7 +10,7 @@ class EditPostView{
 	private $id ="id";
 	private $categorypick ="categorypick";
 	private $postbutton ="postbutton";
-
+	
 		const POST_UPDATED = 0;
 		const TITLE_IS_EMPTY = 1;
 		const POST_IS_EMPTY = 2;
@@ -32,7 +32,7 @@ class EditPostView{
 						<div class="">	
 							<p id="editPostLabel">Författare:</p>
 							<p><input type="text" id="editPostAuthor" name="'.$this->author.'" value="'.$blogpost->getAuthor().'"" /></p>
-						</div>									
+						</div>						
 						<div class="">	
 							<p><button name="'.$this->postbutton.'" class="button" id="editPostButton"">Redigera inlägg</button></p>
 						</div>				

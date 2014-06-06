@@ -57,8 +57,7 @@ class CreatePostController{
 			}
 			
 			if($this->error === FALSE){
-				//$blogpost = new blogpost($blogpostsView->GetTitle(), $blogpostsView->GetPost(), $blogpostsView->GetAuthor())
-				if($postsHandler->CreatePost($createpostView->GetTitle(), $createpostView->GetPost(), $createpostView->GetAuthor())){ //skicka in $blogpost
+				if($postsHandler->CreatePost($createpostView->GetTitle(), $createpostView->GetPost(), $createpostView->GetAuthor(), $createpostView->GetCategory())){ //skicka in $blogpost
 					$this->message .=$createpostView->Message(CreatePostView::POST_CREATED);
 				}
 			}	

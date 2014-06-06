@@ -24,16 +24,16 @@ class PostArray{
 	private $title;
 	private $post;
 	private $author;
-	//private $picture;
 	private $date;
+	private $category;
 	
-	public function __construct($id, $title, $post, $author, $date){
+	public function __construct($id, $title, $post, $author, $date, $category){
 		$this->id = $id;
 		$this->title = $title;
 		$this->post = $post;
 		$this->author = $author;
-		//$this->picture = $picture;
 		$this->date = $date;
+		$this->category = $category;
 	}
 	
 	public function getId(){
@@ -52,9 +52,9 @@ class PostArray{
 		return $this->author;
 	}
 
-	// public function getPicture(){
-	// 	return $this->picture;
-	// }
+	public function getCategory(){
+	return $this->category;
+	}
 
 	public function getDate(){
 		return $this->date;
