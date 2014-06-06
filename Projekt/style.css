@@ -247,6 +247,19 @@
 #createPostTitleForm{
 	width: 400px;
 }
+
+#CreatePostViewValidation{
+	font-size: 12px;
+	font-weight: bold;
+	background-color: white;
+	margin-left: 600px;
+	margin-right: 600px;
+	margin-bottom: -16px;
+	padding-left: 100px;
+	padding-bottom: 10px;
+	padding-top: 5px;
+}
+
 /*EditPostView*/
 
 #editPostForm{
@@ -278,4 +291,16 @@
 	font-family: Trebuchet MS, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
+}
+
+#EditPostViewValidation{
+	font-size: 12px;
+	font-weight: bold;
+	background-color: white;
+	margin-left: 600px;
+	margin-right: 600px;
+	margin-bottom: -16px;
+	padding-left: 100px;
+	padding-bottom: 10px;
+	padding-top: 5px;
 }

@@ -85,26 +85,26 @@ class EditPostView{
 				
 				switch($n){
 					case self::POST_UPDATED:
-						$message .= "<p id='fieldtext2'>Inlägget har redigerats</p>";
+						$message .= "<p id='EditPostViewValidation'>Inlägget har redigerats</p>";
 						break;
 						
 					case self::TITLE_IS_EMPTY:
-						$message .= "<p id='fieldtext2'> En title saknas </p>";
+						$message .= "<p id='EditPostViewValidation'> En title saknas </p>";
 						break;
 						
 					case self::POST_IS_EMPTY:
-						$message .= "<p id='fieldtext2'>En text saknas</p>";
+						$message .= "<p id='EditPostViewValidation'>En text saknas</p>";
 						break;
 						
 					case self::AUTHOR_IS_EMPTY:
-						$message .= "<p id='fieldtext2'>Du måste ange en författare</p>";
+						$message .= "<p id='EditPostViewValidation'>Du måste ange en författare</p>";
 						break;
 					case self::NO_HACK:
-						$message .= "<p id='fieldtext2'></p>";
+						$message .= "<p></p>";
 						break;
 				}			
 			
-			return "<p class='message'> $message</p>";
+			return "<p> $message</p>";
 			
 		}	
 }

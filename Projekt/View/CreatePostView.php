@@ -93,26 +93,26 @@ class CreatePostView{
 				
 				switch($n){
 					case self::POST_CREATED:
-						$message .= "<p id='fieldtext2'>Inlägget har skapats</p>";
+						$message .= "<p id='CreatePostViewValidation'>Inlägget har skapats</p>";
 						break;
 						
 					case self::TITLE_IS_EMPTY:
-						$message .= "<p id='fieldtext2'> En titel saknas</p>";
+						$message .= "<p id='CreatePostViewValidation'> En titel saknas</p>";
 						break;
 						
 					case self::POST_IS_EMPTY:
-						$message .= "<p id='fieldtext2'>En text saknas</p>";
+						$message .= "<p id='CreatePostViewValidation'>En text saknas</p>";
 						break;
 						
 					case self::AUTHOR_IS_EMPTY:
-						$message .= "<p id='fieldtext2'>Du måste ange en författare</p>";
+						$message .= "<p id='CreatePostViewValidation'>Du måste ange en författare</p>";
 						break;
 					case self::NO_HACK:
-						$message .= "<p id='fieldtext2'></p>";
+						$message .= "<p></p>";
 						break;
 				}			
 			
-			return "<p class='message'> $message</p>";
+			return "<p> $message</p>";
 			
 		}	
 }
